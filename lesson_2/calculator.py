@@ -1,29 +1,52 @@
+def prompt(message):
+    print(f'==> {message}')
+
+def invalid_number(number_str):
+    try:
+        int(number_str)
+    except ValueError:
+        return True
+
+    return False
+
 # Welcome user to the program
-print("Welcome to Calculator!")
+prompt("Welcome to Calculator!")
 
-# Ask user for the first number
-print("What's the first number?")
-number1 = int(input())
+# Ask user for the first number & validate it
+prompt("What's the first number?")
+number1 = input()
 
-# Ask user for the second number
-print("What's the second number?")
-number2 = int(input())
+while invalid_number(number1):
+    prompt("Hmm... that doesn't look like a valid number.")
+    number1 = input()
 
-# Ask user what operation they want to perform
-print("What operation would you like to perform?\n"
+# Ask user for the second number & validate it
+prompt("What's the second number?")
+number2 = input()
+
+while invalid_number(number2):
+    prompt("Hmm... that doesn't look like a valid number.")
+    number2 = input()
+
+# Ask user what operation they want to perform & validate their input
+prompt("What operation would you like to perform?\n"
        "1) Add 2) Subtract 3) Multiply 4) Divide")
 operation = input()
 
+while operation not in ['1', '2', '3', '4']:
+    prompt('You must choose 1, 2, 3, or 4')
+    operation = input()
+
 # Perform the operation
-if operation == '1':     # '1' represents addition
-    output = number1 + number2
-elif operation == '2':   # '2' represents subtraction
-    output = number1 - number2
-elif operation == '3':   # '3' represents multiplication
-    output = number1 * number2
-elif operation == '4':   # '4' represents division
-    output = number1 / number2
+match operation:
+    case '1':     # '1' represents addition
+        output = int(number1) + int(number2)
+    case '2':   # '2' represents subtraction
+        output = int(number1) - int(number2)
+    case '3':   # '3' represents multiplication
+        output = int(number1) * int(number2)
+    case '4':   # '4' represents division
+        output = int(number1) / int(number2)
 
 # Print the result to the terminal.
-print(f'The result is: {output}')
-
+prompt(f'The result is: {output}')
