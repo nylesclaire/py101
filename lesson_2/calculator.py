@@ -3,11 +3,11 @@ import json
 with open('calculator_messages.json', 'r') as file:
     mess = json.load(file)
 
-LANGUAGE = "en"
+language = "en"
 
-def prompt(key):
-    message = mess[LANGUAGE][key]
-    print(f'==> {message}')
+def prompt(key, optional=None):
+    message = mess[language][key]
+    print(f'==> {message}',optional)
 
 def invalid_number(number_str):
     try:
@@ -60,7 +60,7 @@ while True:
                 continue
 
     # Print the result to the terminal.
-    prompt("result"),print(output)
+    prompt("result", output)
 
     # Ask the user if they'd like to continue.
     prompt("another")
