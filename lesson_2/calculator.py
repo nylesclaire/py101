@@ -1,4 +1,4 @@
-LANGUAGE = "de"
+LANGUAGE = "en"
 
 import json
 
@@ -54,7 +54,11 @@ while True:
         case '3':   # '3' represents multiplication
             output = int(number1) * int(number2)
         case '4':   # '4' represents division
-            output = int(number1) / int(number2)
+            try:
+                output = int(number1) / int(number2)
+            except ZeroDivisionError:
+                prompt("divide_by_zero")
+                continue
 
     # Print the result to the terminal.
     prompt("result"),print(output)

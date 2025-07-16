@@ -6,6 +6,7 @@
     "second" : "What's the second number?",
     "oper" : "What operation would you like to perform?\n1) Addition 2) Subtraction 3) Multiplication 4) Division",
     "oper_inval" : "You must choose 1, 2, 3, or 4.",
+    "divide_by_zero" : "Cannot divide by zero. Start over, please.",
     "result" : "The result is: ",
     "another" : "Would you like to do another calculation?\nPress Y to continue.",
     "goodbye" : "Thanks for using Calculator! Bye!"
@@ -17,6 +18,7 @@
     "second" : "Was ist das zweite Nummer?",
     "oper" : "Was Rechenoperation möchten Sie machen?\n1) Addition 2) Subtraktion 3) Multiplikation 4) Division",
     "oper_inval" : "Sie mussen 1, 2, 3, oder 4 wählen.",
+    "divide_by_zero" : "Division durch Null nicht möglich. Beginnen Sie noch einmal, bitte.",
     "result" : "Das Ergebnis ist: ",
     "another" : "Möchten Sie noch ein Rechenoperation machen?\nDrücken Sie Y um fortzufahren.",
     "goodbye" : "Danke für der Rechner benutzen! Tschüss!"
