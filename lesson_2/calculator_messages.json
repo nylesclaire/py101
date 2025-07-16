@@ -1,5 +1,5 @@
 {
- "english" : {
+ "en" : {
     "hi" : "Welcome to Calculator!",
     "first" : "What's the first number?",
     "inval" : "Hmm... that doesn't look like a valid number.", 
@@ -10,8 +10,8 @@
     "another" : "Would you like to do another calculation?\nPress Y to continue.",
     "goodbye" : "Thanks for using Calculator! Bye!"
   },
-  "german" : {
-    "hi" : "Hallo, willkommen beim Rechner!",
+  "de" : {
+    "hi" : "Willkommen beim Rechner!",
     "first" : "Was ist das erste Nummer?",
     "inval" : "Hmm... das sieht nicht nach einer gültigen Nummer aus.",
     "second" : "Was ist das zweite Nummer?",
