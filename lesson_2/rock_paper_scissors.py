@@ -8,37 +8,31 @@ CHOICES_DICT = {
     'v':'spock',
     }
 
+WINNER_COMBOS = {
+    'rock': ['scissors', 'lizard'],
+    'paper': ['rock', 'spock'],
+    'scissors': ['paper', 'lizard'],
+    'lizard': ['spock', 'paper'],
+    'spock': ['scissors', 'rock'],
+}
+
 def prompt(message):
     print(f"==> {message}")
 
+def player_won(player_choice, computer_choice):
+    if computer_choice in WINNER_COMBOS[player_choice]:
+        return True
+
 def display_winner(player, computer):
     prompt(f"You chose {player}, computer chose {computer}")
+    if player_won(player, computer):
+        prompt("You won!")
+    elif player == computer:
+        prompt("It's a tie.")
+    else:
+        prompt("The computer won!")
 
-    if ((player == "rock" and computer == "scissors") or
-        (player == "rock" and computer == "lizard") or
-        (player == "paper" and computer == "rock") or
-        (player == "paper" and computer == "spock") or
-        (player == "scissors" and computer == "paper") or
-        (player == "scissors" and computer == "lizard") or
-        (player == "lizard" and computer == "spock") or
-        (player == "lizard" and computer == "paper") or
-        (player == "spock" and computer == "scissors") or
-        (player == "spock" and computer == "rock")):
-        prompt("You win!")
-    elif ((player == "rock" and computer == "paper") or
-        (player == "rock" and computer == "spock") or
-        (player == "paper" and computer == "scissors") or
-        (player == "paper" and computer == "lizard") or
-        (player == "scissors" and computer == "rock") or
-        (player == "scissors" and computer == "spock") or
-        (player == "lizard" and computer == "scissors") or
-        (player == "lizard" and computer == "rock") or
-        (player == "spock" and computer == "paper") or
-        (player == "spock" and computer == "lizard")):
-        prompt("Computer wins!")
-    else: 
-        prompt("It's a tie!")
-
+#Begin main program
 while True:
     prompt(f"Choose one:")
     for key, value in CHOICES_DICT.items():
@@ -51,9 +45,9 @@ while True:
 
     choice = CHOICES_DICT[short_choice]
 
-    computer_choice = random.choice(list(CHOICES_DICT.values()))
+    computer_chooses = random.choice(list(CHOICES_DICT.values()))
 
-    display_winner(choice, computer_choice)
+    display_winner(choice, computer_chooses)
 
     while True:
         prompt("Do you want to play again (y/n)?")
