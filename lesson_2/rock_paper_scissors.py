@@ -1,6 +1,12 @@
 import random
 
-VALID_CHOICES = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+CHOICES_DICT = {
+    'r':'rock', 
+    'p':'paper', 
+    's':'scissors', 
+    'l':'lizard',
+    'v':'spock',
+    }
 
 def prompt(message):
     print(f"==> {message}")
@@ -34,14 +40,18 @@ def display_winner(player, computer):
         prompt("It's a tie!")
 
 while True:
-    prompt(f'Choose one: {", ".join(VALID_CHOICES)}')
-    choice = input()
+    prompt(f"Choose one:")
+    for key, value in CHOICES_DICT.items():
+        print(f'{key} for {value}') 
+    short_choice = input().lower()
 
-    while choice not in VALID_CHOICES:
+    while short_choice not in list(CHOICES_DICT):
         prompt("That's not a valid choice")
-        choice = input()
+        short_choice = input().lower()
 
-    computer_choice = random.choice(VALID_CHOICES)
+    choice = CHOICES_DICT[short_choice]
+
+    computer_choice = random.choice(list(CHOICES_DICT.values()))
 
     display_winner(choice, computer_choice)
 
