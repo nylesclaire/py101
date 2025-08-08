@@ -9,12 +9,29 @@ CHOICES_DICT = {
     }
 
 WINNER_COMBOS = {
-    'rock': ['scissors', 'lizard'],
-    'paper': ['rock', 'spock'],
-    'scissors': ['paper', 'lizard'],
-    'lizard': ['spock', 'paper'],
-    'spock': ['scissors', 'rock'],
+    'rock': {
+        'scissors': 'crushes', 
+        'lizard': 'smushes'
+    },
+    'paper': {
+        'rock': 'covers', 
+        'spock': 'disproves'
+    },
+    'scissors': {
+        'paper': 'cuts',
+        'lizard': 'decapitates'
+    },
+    'lizard': {
+        'spock': 'poisons', 
+        'paper': 'eats'
+    },
+    'spock': {
+        'scissors': 'smashes', 
+        'rock': 'vaporizes'
+    },
 }
+
+GRAND_WINNER_GAMES_TOTAL = 3
 
 def prompt(message):
     print(f"==> {message}")
@@ -26,24 +43,40 @@ def determine_winner(player_choice, computer_choice):
         return "Tie"
     return "Computer"
 
-def display_winner(player, computer):
-    prompt(f"You chose {player}, computer chose {computer}")
+def determine_verb(player, computer):
     match determine_winner(player, computer):
         case "Player":
-            prompt("You won!")
+            # losers_dict = WINNER_COMBOS[player]
+            verb = WINNER_COMBOS[player][computer]
+            return verb
+        case "Computer":
+            # losers_dict = WINNER_COMBOS[computer]
+            verb = WINNER_COMBOS[computer][player]
+            return verb
+
+def display_winner(player, computer):
+    prompt(f"You chose {player}, computer chose {computer}.")
+    verb = determine_verb(player, computer)
+    match determine_winner(player, computer):
+        case "Player":
+            prompt(f"{player.capitalize()} {verb} {computer}!")
+            prompt("You won.")
         case "Tie":
             prompt("It's a tie.")
         case "Computer":
-            prompt("The computer won!")
+            prompt(f"{computer.capitalize()} {verb} {player}!")
+            prompt("The computer won.")
+    print("------------------")
 
 #Begin main program
-player_total_wins = 0
-computer_total_wins = 0
-current_game = 1
+player_total_wins = 0       # pylint: disable=C0103
+computer_total_wins = 0     # pylint: disable=C0103
+current_game = 1            # pylint: disable=C0103
 
 while True:
     prompt("Let's play Best of Five!")
-    while player_total_wins < 3 and computer_total_wins < 3:
+    while (player_total_wins < GRAND_WINNER_GAMES_TOTAL and 
+           computer_total_wins < GRAND_WINNER_GAMES_TOTAL):
         prompt(f"Game {current_game}:")
         prompt("Choose one:")
         for key, value in CHOICES_DICT.items():
@@ -68,7 +101,7 @@ while True:
             case "Computer":
                 computer_total_wins += 1
 
-    if player_total_wins == 3:
+    if player_total_wins == GRAND_WINNER_GAMES_TOTAL:
         prompt("You're the grand winner!")
     else:
         prompt("The computer is the grand winner!")
@@ -78,9 +111,9 @@ while True:
         answer = input().lower()
 
         if answer.startswith('n') or answer.startswith('y'):
-            player_total_wins = 0
-            computer_total_wins = 0
-            current_game = 1
+            player_total_wins = 0       # pylint: disable=C0103
+            computer_total_wins = 0     # pylint: disable=C0103
+            current_game = 1            # pylint: disable=C0103
             break
         prompt("That's not a valid choice")
 
