@@ -7,7 +7,10 @@ language = "en"
 
 def prompt(key, optional=None):
     message = mess[language][key]
-    print(f'==> {message}',optional)
+    if optional is not None:
+        print(f'==> {message}',optional)
+    else:
+        print(f'==> {message}')
 
 def invalid_number(number_str):
     try:
