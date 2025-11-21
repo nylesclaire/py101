@@ -1,5 +1,7 @@
 # Mortage / Car Loan Calculator
 
+MONTHS_IN_YEAR = 12
+
 def prompt(message):
     print(f'==> {message}')
 
@@ -8,6 +10,9 @@ def get_valid_principal():
     while True:
         user_principal = input()
         user_principal = user_principal.replace(',', '')
+        if user_principal == 'inf':
+            prompt("That doesn't seem to be a valid number-- try again.")
+            continue
         try:
             user_principal = float(user_principal)
             if user_principal > 0:
@@ -25,6 +30,9 @@ def get_valid_apr():
            please type in 5.5.''')
     while True:
         user_apr = input()
+        if user_apr == 'inf':
+            prompt("That doesn't seem to be a valid number-- try again.")
+            continue
         try:
             user_apr = float(user_apr)
             if 0 <= user_apr < 100:
@@ -43,6 +51,9 @@ def get_valid_duration():
         user_loan_dur = input()
         if user_loan_dur in ['y','Y','years','Years']:
             user_loan_dur = years_dur_to_months()
+        if user_loan_dur == 'inf':
+            prompt(("That doesn't seem to be a valid number-- try again."))
+            continue
         try:
             user_loan_dur = float(user_loan_dur)
             if 0 < user_loan_dur:
@@ -58,13 +69,15 @@ def years_dur_to_months():
     prompt("What is the duration in years?")
     while True:
         years_dur = input()
+        if years_dur == 'inf':
+            prompt("That doesn't seem to be a valid number-- try again.")
+            continue
         try:
             years_dur = float(years_dur)
-            loan_in_months = years_dur * 12
+            loan_in_months = years_dur * MONTHS_IN_YEAR
             break
         except ValueError:
-            prompt("That doesn't seem to be \
-                    a valid number-- try again.")
+            prompt("That doesn't seem to be a valid number-- try again.")
             continue
     return loan_in_months
 
@@ -78,7 +91,7 @@ while True:
     # Get the annual percentage rate (APR), validate
     apr = get_valid_apr()
     # Calculate the monthly interest rate
-    mon_int_rate = apr / 1200
+    mon_int_rate = (apr / MONTHS_IN_YEAR) / 100
 
     # Get the duration of the loan (in either months or years)
     # Convert the duration of the loan to months, if need be
