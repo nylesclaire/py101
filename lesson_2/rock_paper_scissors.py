@@ -5,7 +5,7 @@ CHOICES_DICT = {
     'p':'paper', 
     's':'scissors', 
     'l':'lizard',
-    'v':'spock',
+    'v':'Spock',
     }
 
 WINNER_COMBOS = {
@@ -15,17 +15,17 @@ WINNER_COMBOS = {
     },
     'paper': {
         'rock': 'covers', 
-        'spock': 'disproves'
+        'Spock': 'disproves'
     },
     'scissors': {
         'paper': 'cuts',
         'lizard': 'decapitates'
     },
     'lizard': {
-        'spock': 'poisons', 
+        'Spock': 'poisons', 
         'paper': 'eats'
     },
-    'spock': {
+    'Spock': {
         'scissors': 'smashes', 
         'rock': 'vaporizes'
     },
