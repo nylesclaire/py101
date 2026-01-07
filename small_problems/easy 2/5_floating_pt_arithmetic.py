@@ -1,0 +1,10 @@
+flt1 = float(input("==> Enter the first number:\n"))
+flt2 = float(input("==> Enter the second number:\n"))
+
+print(f"==> {flt1} + {flt2} = {flt1 + flt2}")
+print(f"==> {flt1} - {flt2} = {flt1 - flt2}")
+print(f"==> {flt1} * {flt2} = {flt1 * flt2}")
+print(f"==> {flt1} / {flt2} = {flt1 / flt2}")
+print(f"==> {flt1} // {flt2} = {flt1 // flt2}")
+print(f"==> {flt1} % {flt2} = {flt1 % flt2}")
+print(f"==> {flt1} ** {flt2} = {flt1 ** flt2}")
