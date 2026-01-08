@@ -1,0 +1,10 @@
+noun = input("Enter a noun: ")
+verb = input("Enter a verb: ")
+adjective = input("Enter an adjective: ")
+adverb = input("Enter an adverb: ")
+
+print("==> ==> ==>")
+print(f"Do you {verb} your {adjective} {noun} {adverb}? That's hilarious.")
+print(f"The {adjective} {noun} {verb}s {adverb} over the lazy dog.")
+print(f"The {noun} {adverb} {verb}s up to Joe's {adjective} turtle.")
+print(f"If you have a {adjective} {noun}, don't forget to {verb} it very {adverb}.")
